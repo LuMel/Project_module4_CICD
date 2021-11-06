@@ -11,10 +11,10 @@ import os
 
 def split_and_train():
     # Add code to load in the data.
-    parameters = yaml.safe_load(open('../params.yaml'))
+    parameters = yaml.safe_load(open('params.yaml'))
 
     input_path = parameters['data']['input_path']
-    data_raw = pd.read_csv("../" + input_path + "census.csv")
+    data_raw = pd.read_csv(input_path + "census.csv")
 
     # pre cleaning
     data = remove_spaces(data_raw)
@@ -38,12 +38,12 @@ def split_and_train():
     Xy_train = np.concatenate([X_train, y_train.reshape(y_train.shape[0],1)], axis=1)
     Xy_test = np.concatenate([X_test, y_test.reshape(y_test.shape[0],1)], axis=1)
 
-    os.makedirs("../data/prepared", exist_ok=True)
+    os.makedirs("data/prepared", exist_ok=True)
     # save processed train/test data
-    with open("../data/prepared/train.pkl", 'wb') as f:
+    with open("data/prepared/train.pkl", 'wb') as f:
             pickle.dump(Xy_train, f)
 
-    with open("../data/prepared/test.pkl", 'wb') as f:
+    with open("data/prepared/test.pkl", 'wb') as f:
             pickle.dump(Xy_test, f)
 
     depth_ = parameters['model']['max_depth']
@@ -51,9 +51,9 @@ def split_and_train():
     # Train and save a model.
     fitted_model = model.train_model(X_train, y_train, max_depth = depth_, imbalance=imbalance_)
 
-    os.makedirs("../model", exist_ok=True)
+    os.makedirs("model/model", exist_ok=True)
     # save model to disk
-    with open('../model/rfc.pkl', 'wb') as file:
+    with open('model/model/rfc.pkl', 'wb') as file:
         pickle.dump(fitted_model, file)
 
     return None

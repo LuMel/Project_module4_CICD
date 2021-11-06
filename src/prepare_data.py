@@ -81,8 +81,8 @@ def process_data(
             pass
 
     # save encoder
-    os.makedirs("../data/encoders", exist_ok=True)
-    with open("../data/encoders/onehotenc.pkl", 'wb') as f:
+    os.makedirs("data/encoders", exist_ok=True)
+    with open("data/encoders/onehotenc.pkl", 'wb') as f:
         pickle.dump(encoder, f)
     
     X = np.concatenate([X_continuous, X_categorical], axis=1)
