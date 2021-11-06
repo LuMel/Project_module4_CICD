@@ -1,0 +1,9 @@
+data:
+  categorical_features: ['workclass', 'education', 'marital-status', 
+                     'occupation', 'relationship', 'race', 'sex', 'native-country']
+  input_path: data/
+  train_test_split: 0.20
+
+model:
+  max_depth: 5
+  imbalance: True
