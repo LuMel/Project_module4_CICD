@@ -2,21 +2,23 @@ import numpy as np
 import pandas as pd
 import os
 import pickle
+import yaml
 from typing import List, Optional, Tuple
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
-def remove_spaces(raw_data: pd.DataFrame) -> pd.DataFrame:
+def remove_spaces(raw_data: pd.DataFrame, categorical_feats: List[str]) -> pd.DataFrame:
     """
-    Removes spaces from columns in raw data
+    Removes spaces from columns & values in raw data
     Inputs
     ------
     raw_data : pd.DataFrame
                 DataFrame containing the raw data
     Output
     ------
-    pd.DataFrame identical to raw_data but with the spaces in the column's names removed
-    """
+    pd.DataFrame identical to raw_data but with the spaces in the column's names & values removed
+    """    
     raw_data.columns = [col.strip() for col in raw_data]
+    raw_data = raw_data.apply(lambda x: x.str.strip() if x.name in categorical_feats else x)
     return raw_data
 
 def process_data(

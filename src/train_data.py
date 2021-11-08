@@ -17,7 +17,7 @@ def split_and_train():
     data_raw = pd.read_csv(input_path + "census.csv")
 
     # pre cleaning
-    data = remove_spaces(data_raw)
+    data = remove_spaces(data_raw, parameters['data']['categorical_features'])
 
     # Optional enhancement, use K-fold cross validation instead of a train-test split.
     train, test = train_test_split(data, 
