@@ -74,6 +74,11 @@ def process_data(
         lb = LabelBinarizer()
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
+
+        # save encoder
+        os.makedirs("data/encoders", exist_ok=True)
+        with open("data/encoders/onehotenc.pkl", 'wb') as f:
+            pickle.dump(encoder, f)
     else:
         X_categorical = encoder.transform(X_categorical)
         try:
@@ -81,11 +86,7 @@ def process_data(
         # Catch the case where y is None because we're doing inference.
         except AttributeError:
             pass
-
-    # save encoder
-    os.makedirs("data/encoders", exist_ok=True)
-    with open("data/encoders/onehotenc.pkl", 'wb') as f:
-        pickle.dump(encoder, f)
     
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+

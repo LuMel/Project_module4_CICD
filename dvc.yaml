@@ -1,0 +1,19 @@
+stages:
+  prepare_and_train:
+    cmd: python main.py
+    deps:
+    - data/census.csv
+    - src/model.py
+    - src/prepare_data.py
+    - src/train_data.py
+    params:
+    - data.categorical_features
+    - data.input_path
+    - data.numerical_features
+    - data.train_test_split
+    - model.imbalance
+    - model.max_depth
+    outs:
+    - data/encoders/onehotenc.pkl
+    - data/prepared
+    - model/model/rfc.pkl

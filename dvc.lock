@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  prepare_and_train:
+    cmd: python main.py
+    deps:
+    - path: data/census.csv
+      md5: 145de00f6e6053d3f7044628f9a5b5ff
+      size: 3974474
+    - path: src/model.py
+      md5: 57edb67634bfd0c74d69a29b8c6beee3
+      size: 4901
+    - path: src/prepare_data.py
+      md5: f1440fd24c3e6ff2a1bd6d5e1e7676e0
+      size: 3542
+    - path: src/train_data.py
+      md5: 73d8f2931a218dafae5a9dc7be7d8b69
+      size: 2149
+    params:
+      params.yaml:
+        data.categorical_features:
+        - workclass
+        - education
+        - marital-status
+        - occupation
+        - relationship
+        - race
+        - sex
+        - native-country
+        data.input_path: data/
+        data.numerical_features:
+        - age
+        - fnlgt
+        - education-num
+        - capital-gain
+        - capital-loss
+        - hours-per-week
+        data.train_test_split: 0.2
+        model.imbalance: true
+        model.max_depth: 5
+    outs:
+    - path: data/encoders/onehotenc.pkl
+      md5: b5e21066ab5b1d2ec327249e9ba59391
+      size: 1827
+    - path: data/prepared
+      md5: 9d9c38bd448244c4e633ee06982e70dd.dir
+      size: 28393516
+      nfiles: 2
+    - path: model/model/rfc.pkl
+      md5: 1225eb476a5179aca2cade9c9bda89ee
+      size: 438724
