@@ -44,7 +44,10 @@ def test_remove_spaces_col_names(data: pd.DataFrame):
                         "capital-loss", "hours-per-week", "native-country", 
                         "salary"]
 
-    data_rm = remove_spaces(data)
+    cat_features = ["workclass", "education", "marital-status", "occupation",
+                    "relationship", "race", "sex", "native-country"]
+
+    data_rm = remove_spaces(data, cat_features)
     assert list(expected_columns) == list(data_rm.columns.values), "Columns are not as expeted"
 
 def test_split_type(data_train_test: Tuple[np.ndarray, np.ndarray]):
