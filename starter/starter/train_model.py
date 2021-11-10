@@ -1,4 +1,4 @@
-# Script to train machine learning model.
+"""# Script to train machine learning model.
 
 from sklearn.model_selection import train_test_split
 
@@ -26,3 +26,4 @@ X_train, y_train, encoder, lb = process_data(
 # Proces the test data with the process_data function.
 
 # Train and save a model.
+"""
