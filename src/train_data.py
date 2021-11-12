@@ -1,7 +1,16 @@
 # Script to train machine learning model.
 from sklearn import model_selection
-from src.prepare_data import process_data, remove_spaces
-from src import model
+if __name__ == "src.train_data":
+    from src.prepare_data import process_data, remove_spaces
+    from src import model
+elif __name__ == "Project_module4_CICD.src.train_data":
+    from ..src.prepare_data import process_data, remove_spaces
+    from ..src import model
+else:
+    print(__name__)
+    raise ModuleNotFoundError
+#from src.prepare_data import process_data, remove_spaces
+#from src import model
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np

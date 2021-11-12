@@ -1,7 +1,10 @@
 import pandas as pd
 import numpy as np
+print(__name__)
+
 from ..prepare_data import remove_spaces
 from typing import Tuple
+
 
 def test_column_names_raw(data: pd.DataFrame):
     """

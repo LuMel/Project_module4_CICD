@@ -1,17 +1,19 @@
-import os
-import uvicorn
-from src.train_data import split_and_train
-from src import fastAPI_main
+# Put the code for your API here.
+#from src.train_data import split_and_train
+#from src.prepare_data import process_data
+#from src import model
 
-
-if __name__ == "__main__":
-    uvicorn.run("src.fastAPI_main:app")
-    #split_and_train()
-
-"""# Put the code for your API here.
-from src.train_data import split_and_train
-from src.prepare_data import process_data
-from src import model
+if __name__ == "src.fastAPI_main":
+    from .train_data import split_and_train
+    from .prepare_data import process_data
+    from . import model
+elif __name__ == "Project_module4_CICD.src.fastAPI_main":
+    from ..src.train_data import split_and_train
+    from ..src.prepare_data import process_data
+    from ..src import model
+else:
+    print(__name__)
+    raise ModuleNotFoundError
 import pandas as pd
 import numpy as np
 import uvicorn
@@ -86,41 +88,3 @@ async def get_preds(input_data: DataIn):
     model_rfc = pd.read_pickle("model/model/rfc.pkl")
 
     return {"predictions": f"{model.inference(model_rfc, X_in)[0]}"}
-
-if __name__ == '__main__':
-    test_data_neg = {
-        "age": 39,
-        "workclass": "State-gov",
-        "fnlgt": 77516,
-        "education": "Bachelors",
-        "education-num": 13,
-        "marital-status": "Never-married",
-        "occupation": "Adm-clerical",
-        "relationship": "Not-in-family",
-        "race": "White",
-        "sex": "Male",
-        "capital-gain": 2174,
-        "capital-loss": 0,
-        "hours-per-week": 40,
-        "native-country": "United-States",
-    }
-
-    test_data_pos = {
-        "age": 40,
-        "workclass": "Private",
-        "fnlgt": 193524,
-        "education": "Doctorate",
-        "education-num": 16,
-        "marital-status": "Married-civ-spouse",
-        "occupation": "Prof-specialty",
-        "relationship": "Husband",
-        "race": "White",
-        "sex": "Male",
-        "capital-gain": 0,
-        "capital-loss": 0,
-        "hours-per-week": 60,
-        "native-country": "United-States",
-    }
-
-    test_(test_data_neg, "0")
-    test_(test_data_pos, "1")"""
