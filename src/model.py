@@ -126,7 +126,7 @@ def performance_data_slice(onehotenc: OneHotEncoder,
             df_performance.to_csv("data/prepared/slice_output.txt", sep=' ', mode='a')
         return df_performance
 
-    value_look = value_look = [col for col in onehotenc.get_feature_names_out() if col[3:] == value]
+    value_look = [col for col in onehotenc.get_feature_names_out() if col[3:] == value]
     value_idx = [len(num_features) + i for i, e in enumerate(onehotenc.get_feature_names_out()) if e in value_look]
 
     assert len(list(set(cols_idx) & set(value_idx))) > 0,  "value does not belong to column"
