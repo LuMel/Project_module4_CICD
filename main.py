@@ -30,7 +30,7 @@ def get_global_metrics():
     return compute_model_metrics(y, y_preds)
 
 if __name__ == "__main__":
-    #uvicorn.run("src.fastAPI_main:app")
+    uvicorn.run("src.fastAPI_main:app")
     #split_and_train()
     #extract_metrics_slice()
-    print(get_global_metrics())
+    #print(get_global_metrics())
