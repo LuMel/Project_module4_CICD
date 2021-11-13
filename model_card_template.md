@@ -11,11 +11,15 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Intended Use
 
-
+    - Udacity MLOps Course - module 4.
 
 ## Training Data
 
+    - The model was trained on 80% of the data. Some pre-process steps have been implemented.
+
 ## Evaluation Data
+
+    - The test (evaluation) set includes the remaining 20% of the data
 
 ## Metrics
 
