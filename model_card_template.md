@@ -23,7 +23,10 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Metrics
 
-
+    - The global metrics found for this dataset with the chosen model are_
+        - precision: 0.47830543218312266
+        - recall: 0.8832807570977917 
+        - f_beta: 0.6205673758865248
 
 ## Ethical Considerations
 
