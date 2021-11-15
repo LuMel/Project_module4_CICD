@@ -43,9 +43,9 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
     We include dissagregated metrics based on education
 
-    ![precision](./screenshots/precision_ed.png)
-    ![recall](./screenshots/recall_ed.png)
-    ![fbeta](./screenshots/fbeta_ed.png)
+![precision](./screenshots/precision_ed.png)
+![recall](./screenshots/recall_ed.png)
+![fbeta](./screenshots/fbeta_ed.png)
 
 ## Ethical Considerations
 
